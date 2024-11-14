@@ -17,20 +17,20 @@ jobs: # jobs [required] - one or more jobs, sequence of tasks (steps)
   build:
   ### 5. RUNNERS ###
     runs-on: ubuntu-latest
-      ### 5. ACTIONS ###
-      steps:
-        - uses: actions/checkout@v4 # uses - select an action, under path action/ the resusable code is hosted
-        - name: Step up JDK 17
-          uses: actions/setup-java@v4
-          with:
-            java-version: "17"
-            distribution: "temurin"
-            cache: maven
-        - name: Build with Maven
-          # run - runs a command-line command
-          run: mvn -B package pom.xml
-        - name: Upload artifacts
-          uses: actions/upload-artifact@v4
-          with:
-            name: target-files
-            path: target
+    ### 5. ACTIONS ###
+    steps:
+      - uses: actions/checkout@v4 # uses - select an action, under path action/ the resusable code is hosted
+      - name: Step up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+      - name: Build with Maven
+        # run - runs a command-line command
+        run: mvn -B package pom.xml
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: target-files
+          path: target
